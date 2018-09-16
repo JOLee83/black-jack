@@ -26,12 +26,8 @@ let countPlayer = () => {
   if (playerHand.length === 5) {
     playerCount = playerHand[0].value + playerHand[1].value + playerHand[2].value + playerHand[3].value + playerHand[4].value
     showPlayer.textContent = playerCount
+    noMore()
   }
-  if (playerHand.length === 6) {
-    playerCount = playerHand[0].value + playerHand[1].value + playerHand[2].value + playerHand[3].value + playerHand[4].value + playerHand[5].value
-    showPlayer.textContent = playerCount
-  }
-
 }
 let countDealer = () => {
   if (dealerHand.length === 2) {
@@ -49,25 +45,19 @@ let countDealer = () => {
   if (dealerHand.length === 5) {
     dealerCount = dealerHand[0].value + dealerHand[1].value + dealerHand[2].value + dealerHand[3].value + dealerHand[4].value
     showDealer.textContent = dealerCount
+    checkWinner()
   }
-  if (dealerHand.length === 6) {
-    dealerCount = dealerHand[0].value + dealerHand[1].value + dealerHand[2].value + dealerHand[3].value + dealerHand[4].value + dealerHand[5].value
-    showDealer.textContent = dealerCount
-  }
-
 }
-
-
 const checkWinner = () => {
   console.log("check winner");
-  if (showDealer.textContent > showPlayer.textContent) {
-    displayStatus.textContent = "YOU LOSE.";
+  if (dealerCount > playerCount) {
+    displayStatus.textContent = "DEALER HAS " + `${showDealer.textContent}` + ", YOU LOSE.";
   };
-  if  (showDealer.textContent < showPlayer.textContent) {
-    displayStatus.textContent = "YOU WIN!";
+  if  (dealerCount < playerCount) {
+    displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", YOU WIN!";
   };
-  if  (showDealer.textContent === showPlayer.textContent) {
-    displayStatus.textContent = "IT'S A DRAW, THE DEALER WINS.";
+  if  (dealerCount === playerCount) {
+    displayStatus.textContent = "YOU BOTH HAVE" + `${showPlayer.textContent}` + ", THE DEALER WINS.";
   };
 };
 
@@ -78,15 +68,14 @@ const noMore = () => {
   document.querySelector(".back").classList.add("hideme")
   dealCardToDealer()
   countDealer()
-  // show dealer hidden card and show total then continue down
-  if (showDealer.textContent < 17) {
+   if (dealerCount < 17) {
     noMore ()
   }
-  if ((showDealer.textContent >= 17) && (showDealer.textContent <= 21)) {
+  if ((dealerCount >= 17) && (dealerCount <= 21)) {
     checkWinner();
   }
-  if (showDealer.textContent > 21) {
-    displayStatus.textContent = "DEALER BUSTED, YOU WIN!";
+  if (dealerCount > 21) {
+    displayStatus.textContent = "DEALER BUSTED WITH " + `${showDealer.textContent}` + ", YOU WIN!";
   }
 
 
@@ -96,11 +85,11 @@ const giveMore = () => {
   console.log("hit");
   dealCardToPlayer()
   countPlayer()
-  if (showPlayer.textContent <= 21) {
-  displayStatus.textContent = "HIT OR STAY"
+  if (playerCount <= 21) {
+  displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
  };
   // link to fucntion to initialize players next card
-  if (showPlayer.textContent > 21) {
+  if (playerCount > 21) {
     document.querySelector(".hits").classList.add("hideme")
     document.querySelector(".stays").classList.add("hideme")
     displayStatus.textContent = "YOU BUSTED, PLAY AGAIN"
@@ -147,16 +136,9 @@ const dealCardToDealer = upOrDown => {
   // Tell that image tag where it's image is. We do this dynamically
   // based on the face and the suit
   image.src = `/images/${card.face}${card.suit}.jpg`
-  image.classList.add('popin')
-  if (upOrDown === 'down') {
-    // Do something to display this card down
-    image.src = `/images/backofcard.jpg`
-    // image.className = 'swing'
-  }
-
+  
   // Push that image tag into the DIV as a child
   dealerHandDiv.appendChild(image)
-  // checkWinner()
 }
 
 
@@ -212,6 +194,7 @@ const main = () => {
   // dealCardToDealer('down')
   countPlayer()
   showDealer.textContent = "?"
+  displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
   document.querySelector('.hits').addEventListener('click', giveMore)
   document.querySelector('.stays').addEventListener('click', noMore)
   document.querySelector('.new-game').addEventListener('click', () => {
