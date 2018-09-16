@@ -93,7 +93,7 @@ const noMore = () => {
 // argument for the hit button and ends game if player busts
 const giveMore = () => {
   console.log("hit");
-  setTimeout(dealCardToPlayer, 700)
+  dealCardToPlayer()
   countPlayer()
   if (playerCount <= 21) {
   displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
