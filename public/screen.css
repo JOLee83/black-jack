@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif|Ruslan+Display');
+
 html {
   height: 100%;
 }
@@ -6,56 +7,92 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  font: 16px / 1 sans-serif;
-  background-image: url(./img/background.jpg);
+  background-image: url(./images/background.jpg);
+  font-family: 'Ruslan Display', cursive;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  /* font-family: 'PT Serif', serif; */
-  font-family: 'Ruslan Display', cursive;
-  text-shadow: -2px 0 black, 2px 0 black, 2px 0 black, -2px 0 black;
-  color: white;
+
 }
-img {
-  width: 100.85px;
-  border-radius: 10px;
-  margin: 8px 4px 0 0;
-  height: 146.28px;
+main {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  /* align-content: flex-start; */
 }
 aside {
   border: 2px solid white;
+  flex-direction: row-reverse;
   border-radius: 10px;
-  display: flex;
-  margin: 2px;
+  height: 75px;
+  width: 100px;
+  margin: 0 5px;
+  line-height: .5;
+
 }
-section {
+footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-div {
-  border: 1px solid red;
-  width: 100.85px;
-  height: 146.28px;
-  margin:4px;
-  border-radius: 10px;
+footer div {
+  /* border: 2px solid white; */
+  height: 65px;
+  /* border-radius: 10px; */
+  width: 240px;
 }
 button {
   width: 100px;
   height: 50px;
-  text-shadow: -2px 0 black, 2px 0 black, 2px 0 black, -2px 0 black;
+  text-shadow: -1px 0 black, 0 1px black, 0 1px black, -1px 0 black;
   color: white;
   background-color: darkred;
   border-radius: 10px;
   margin: 10px 5px 0 5px;
   font-family: 'Ruslan Display', cursive;
+  border-color: pink black black pink;
 
 }
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+:root {
+  --aspect-ratio: 1056px/691;
 }
-@media {
-  
+
+.dealer-hand, .player-hand{
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 10px;
+  height: 200px
+}
+
+.dealer-hand img, .player-hand img {
+  width: 35px;
+  height: calc(var(--aspect-ratio) * 35);
+ margin: 0 10px;
+}
+.hideme {
+  display: none;
+}
+.popin {
+   animation: slideinright ease-in-out 3s;
+  transform-origin: center -20px;
+}
+
+@keyframes popin {
+  0% {
+    transform: scale(0);
+
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

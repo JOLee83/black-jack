@@ -3,7 +3,7 @@
   <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Black Jack</title>
+    <title>Blackjack</title>
     <link rel="stylesheet" href="/screen.css">
   </head>
   <body>
@@ -11,35 +11,35 @@
       <h1>BLACK JACK</h1>
     </header>
     <main>
-      <section class="dealer">
-        <img src=".\img\backofcard.jpg" alt="back of card" class="card">
-        <aside class="dealershand">
-          <div class="d1">D1</div>
-          <div class="d2">D2</div>
-          <div class="d3">D3</div>
-          <div class="d4">D4</div>
-          <div class="d5">D5</div>
+      <section>
+        <aside>
+          <h2>Dealer</h2>
+          <h2 class="dealer-score"></h2>
         </aside>
+        <div class='dealer-hand'>
+          <img class="back" src="./images/backofcard.jpg"/>
+        </div>
       </section>
-
-      <section class="player">
-        <img src=".\img\backofcard.jpg" alt="back of card" class="card">
-        <aside class="playershand">
-          <div class="p1">P1</div>
-          <div class="p2">P2</div>
-          <div class="p3">P3</div>
-          <div class="p4">P4</div>
-          <div class="p5">P%</div>
+      <section>
+        <aside>
+          <h2>Player</h2>
+          <h2 class=player-score></h2>
         </aside>
+        <div class='player-hand'></div>
       </section>
-
     </main>
     <footer>
-      <button class="hit">HIT</button>
-      <button class="stay">STAY</button>
-      <button class="newgame">NEW GAME</button>
-      <h4 class="winlose">"win or lose here"</h4>
-    <footer>
+      <div>
+        <button class="hits">Hits</button>
+        <button class="stays">STAY</button>
+      </div>
+      <div>
+        <button class='new-game'>New Game</button>
+      </div>
+      <div>
+        <h3 class="winlose"></h3>
+      </div>
+    </footer>
     <script src="/main.js" charset="utf-8"></script>
   </body>
 </html>

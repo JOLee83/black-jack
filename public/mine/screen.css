@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif|Ruslan+Display');
+html {
+  height: 100%;
+}
+header, footer {
+  font-size: 2rem;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background-image: url(./img/background.jpg);
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  text-align: center;
+  font-family: 'Ruslan Display', cursive;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  color: white;
+}
+.backofcard {
+  width: 100.85px;
+  border-radius: 10px;
+  margin: 8px 4px 0 0;
+  height: 146.28px;
+}
+div.dealershand, div.playershand {
+  border: 2px solid white;
+  border-radius: 10px;
+  display: flex;
+  margin: 2px;
+  background-image: url(./img/blackfelt.png);
+  height: :150px;
+  width: 700px;
+}
+section {
+  display: flex;
+  justify-content: center;
+
+}
+:root {
+  --aspect-ratio: 1024px/706;
+}
+/* aside div {
+  border: 2px solid white;
+  width: 100.85px;
+  height: 146.28px;
+  margin:4px;
+  background-image: url(./img/blackfelt.png);
+  border-radius: 10px;
+} */
+button {
+  width: 100px;
+  height: 50px;
+  text-shadow: -1px 0 black, 0 1px black, 0 1px black, -1px 0 black;
+  color: white;
+  background-color: darkred;
+  border-radius: 10px;
+  margin: 10px 5px 0 5px;
+  font-family: 'Ruslan Display', cursive;
+  border-color: pink black black pink;
+
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+img {
+  width: 100.85px;
+  border-radius: 10px;
+  height: 146.28px;
+}
+.display {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 0 4px;
+  height: 100px;
+  margin: 30px 0 0 4px;
+  background-image: url(./img/blackfelt.png);
+
+}
+/* @media (max-width: 500px) {
+  section {
+    flex-direction: column;
+  }
+  aside {
+    flex-direction: column;
+    width: 120px;
+  }
+} */
