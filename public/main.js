@@ -6,9 +6,9 @@ let playerHand = []
 let deck = []
 //where the player score is displayed
 let showPlayer = document.querySelector(".player-score")
-//where the dealer score is diplayed
+//where the dealer score is displayed
 let showDealer = document.querySelector(".dealer-score")
-// where message for game status is diplayed
+// where message for game status is displayed
 let displayStatus =  document.querySelector(".winlose");
 //sets up the variables for the scores
 let playerCount = 0
@@ -59,27 +59,25 @@ const checkWinner = () => {
   console.log("check winner");
   if (dealerCount > playerCount) {
     displayStatus.textContent = "DEALER HAS " + `${showDealer.textContent}` + ", YOU LOSE.";
-  };
+  }
   if  (dealerCount < playerCount) {
     displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", YOU WIN!";
-  };
+  }
   if  (dealerCount === playerCount) {
     displayStatus.textContent = "YOU BOTH HAVE " + `${showPlayer.textContent}` + ", THE DEALER WINS.";
-  };
-};
+  }
+}
 // arguments for the stay button and ends game if dealer busts
 const noMore = () => {
   console.log("stay");
-  
   // hides the stay and hit button and back of card image in dealers hand.
   document.querySelector(".hits").classList.add("hideme")
   document.querySelector(".stays").classList.add("hideme")
   document.querySelector(".back").classList.add("hideme")
   dealCardToDealer()
   countDealer()
-   if (dealerCount < 17) {
-      setTimeout(noMore, 700)
-      
+  if (dealerCount < 17) {
+    setTimeout(noMore, 700)    
   }
   if ((dealerCount >= 17) && (dealerCount <= 21)) {
     checkWinner();
@@ -87,26 +85,21 @@ const noMore = () => {
   if (dealerCount > 21) {
     displayStatus.textContent = "DEALER BUSTED WITH " + `${showDealer.textContent}` + ", YOU WIN!";
   }
-
-
-};
+}
 // argument for the hit button and ends game if player busts
 const giveMore = () => {
-  console.log("hit");
+  console.log("hit")
   dealCardToPlayer()
   countPlayer()
   if (playerCount <= 21) {
-  displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
- };
+    displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
+  }
   if (playerCount > 21) {
     document.querySelector(".hits").classList.add("hideme")
     document.querySelector(".stays").classList.add("hideme")
     displayStatus.textContent = "YOU BUSTED, PLAY AGAIN"
-
-  };
-};
-
-
+  }
+}
 const dealCardToPlayer = () => {
   countPlayer()
   // Take one card from the deck
@@ -144,13 +137,10 @@ const dealCardToDealer = () => {
 
   // Tell that image tag where it's image is. We do this dynamically
   // based on the face and the suit
-  image.src = `/images/${card.face}${card.suit}.jpg`
-  
+  image.src = `/images/${card.face}${card.suit}.jpg` 
   // Push that image tag into the DIV as a child
   dealerHandDiv.appendChild(image)
 }
-
-
 const main = () => {
   let suits = ['C', 'S', 'D', 'H']
   let cards = [
@@ -168,7 +158,6 @@ const main = () => {
     { value: 10, face: 'K' },
     { value: 11, face: 'A' }
   ]
-
   // loop through all the suits
   suits.forEach(suit => {
     // Do this for each suit
@@ -186,7 +175,6 @@ const main = () => {
       deck.push(newCardForTheDeck)
     })
   })
-
   // Shuffle the deck into a random order
   //
   // Uses [Fisher–Yates shuffle](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle)
@@ -197,12 +185,11 @@ const main = () => {
     deck[i] = secondCard
     deck[j] = firstCard
   }
-  
-  dealCardToPlayer("up")
-  dealCardToPlayer("up")
-  dealCardToDealer('up')
-  // dealCardToDealer('down')
+  dealCardToPlayer()
+  dealCardToPlayer()
+  dealCardToDealer()
   countPlayer()
+  //resets game if 2 aces are dealt at start
   if (playerCount > 21) {
     document.location = "/"
   }

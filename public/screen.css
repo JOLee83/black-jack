@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif|Ruslan+Display');
-
 html {
   height: 100%;
 }
-
 body {
   margin: 0;
   min-height: 100%;
@@ -15,7 +13,6 @@ body {
   flex-direction: column;
   justify-content: flex-starcet;
   text-align: center;
-
 }
 main {
   display: flex;
@@ -57,12 +54,10 @@ button {
   margin: 10px 5px 0 5px;
   font-family: 'Ruslan Display', cursive;
   border-color: pink black black pink;
-
 }
 :root {
   --aspect-ratio: 1056px/691;
 }
-
 .dealer-hand, .player-hand{
   display: flex;
   flex-direction: row;
@@ -76,27 +71,24 @@ button {
   margin: 10px 0 0 0;
   animation: 1s 
 }
-
 .dealer-hand img, .player-hand img {
   width: 50px;
   height: calc(var(--aspect-ratio) * 50);
   margin: 0 5px;
   animation: deal 1s linear;
-  
 }
 .hideme {
   display: none;
 }
 .popin {
-   animation: slideinright ease-in-out 3s;
+  animation: slideinright ease-in-out 3s;
   transform-origin: center -20px;
 }
-
 @keyframes deal {
   0% {
     margin-left:-100%;
-
+  }
   100% {
-    mqgin-left: 0;
+    margin-left: 0;
   }
 }
