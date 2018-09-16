@@ -1,5 +1,8 @@
+//sets dealer hand to an empty array
 let dealerHand = []
+//sets player hand to an empty array
 let playerHand = []
+//sets deck to an empty array
 let deck = []
 //where the player score is displayed
 let showPlayer = document.querySelector(".player-score")
@@ -7,9 +10,11 @@ let showPlayer = document.querySelector(".player-score")
 let showDealer = document.querySelector(".dealer-score")
 // where message for game status is diplayed
 let displayStatus =  document.querySelector(".winlose");
+//sets up the variables for the scores
 let playerCount = 0
 let dealerCount = 0
 
+//count players score and ends turn after 5 cards
 let countPlayer = () => {
   if (playerHand.length === 2) {
     playerCount = playerHand[0].value + playerHand[1].value
@@ -29,6 +34,7 @@ let countPlayer = () => {
     noMore()
   }
 }
+// counts dealers score and ends game after 5 cards
 let countDealer = () => {
   if (dealerHand.length === 2) {
     dealerCount = dealerHand[0].value + dealerHand[1].value
@@ -48,6 +54,7 @@ let countDealer = () => {
     checkWinner()
   }
 }
+// determines who won
 const checkWinner = () => {
   console.log("check winner");
   if (dealerCount > playerCount) {
@@ -60,16 +67,19 @@ const checkWinner = () => {
     displayStatus.textContent = "YOU BOTH HAVE" + `${showPlayer.textContent}` + ", THE DEALER WINS.";
   };
 };
-
+// arguments for the stay button and ends game if dealer busts
 const noMore = () => {
   console.log("stay");
+  
+  // hides the stay and hit button and back of card image in dealers hand.
   document.querySelector(".hits").classList.add("hideme")
   document.querySelector(".stays").classList.add("hideme")
   document.querySelector(".back").classList.add("hideme")
   dealCardToDealer()
   countDealer()
    if (dealerCount < 17) {
-    noMore ()
+      setTimeout(noMore, 700)
+      
   }
   if ((dealerCount >= 17) && (dealerCount <= 21)) {
     checkWinner();
@@ -80,15 +90,14 @@ const noMore = () => {
 
 
 };
-
+// argument for the hit button and ends game if player busts
 const giveMore = () => {
   console.log("hit");
-  dealCardToPlayer()
+  setTimeout(dealCardToPlayer, 700)
   countPlayer()
   if (playerCount <= 21) {
   displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
  };
-  // link to fucntion to initialize players next card
   if (playerCount > 21) {
     document.querySelector(".hits").classList.add("hideme")
     document.querySelector(".stays").classList.add("hideme")
@@ -98,7 +107,7 @@ const giveMore = () => {
 };
 
 
-const dealCardToPlayer = upOrDown => {
+const dealCardToPlayer = () => {
   countPlayer()
   // Take one card from the deck
   let card = deck.pop()
@@ -120,7 +129,7 @@ const dealCardToPlayer = upOrDown => {
 
 }
 
-const dealCardToDealer = upOrDown => {
+const dealCardToDealer = () => {
   // Take one card from the deck
   let card = deck.pop()
 
@@ -188,13 +197,17 @@ const main = () => {
     deck[i] = secondCard
     deck[j] = firstCard
   }
+  
   dealCardToPlayer("up")
   dealCardToPlayer("up")
   dealCardToDealer('up')
   // dealCardToDealer('down')
   countPlayer()
+  // makes the dealer score a ? at the begining
   showDealer.textContent = "?"
+  // message for begining of game
   displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", HIT OR STAY"
+  // all the event listener for the buttons
   document.querySelector('.hits').addEventListener('click', giveMore)
   document.querySelector('.stays').addEventListener('click', noMore)
   document.querySelector('.new-game').addEventListener('click', () => {
