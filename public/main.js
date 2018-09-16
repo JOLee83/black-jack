@@ -64,7 +64,7 @@ const checkWinner = () => {
     displayStatus.textContent = "YOU HAVE " + `${showPlayer.textContent}` + ", YOU WIN!";
   };
   if  (dealerCount === playerCount) {
-    displayStatus.textContent = "YOU BOTH HAVE" + `${showPlayer.textContent}` + ", THE DEALER WINS.";
+    displayStatus.textContent = "YOU BOTH HAVE " + `${showPlayer.textContent}` + ", THE DEALER WINS.";
   };
 };
 // arguments for the stay button and ends game if dealer busts
@@ -203,6 +203,9 @@ const main = () => {
   dealCardToDealer('up')
   // dealCardToDealer('down')
   countPlayer()
+  if (playerCount > 21) {
+    document.location = "/"
+  }
   // makes the dealer score a ? at the begining
   showDealer.textContent = "?"
   // message for begining of game
