@@ -76,6 +76,7 @@ button {
   height: calc(var(--aspect-ratio) * 50);
   margin: 0 5px;
   animation: deal 1s linear;
+  border-radius: 10px;
 }
 .hideme {
   display: none;
