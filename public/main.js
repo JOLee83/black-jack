@@ -73,6 +73,8 @@ const noMore = () => {
   // hides the stay and hit button and back of card image in dealers hand.
   document.querySelector(".hits").classList.add("hideme")
   document.querySelector(".stays").classList.add("hideme")
+  document.querySelector(".fake1").classList.remove("hideme")
+  document.querySelector(".fake2").classList.remove("hideme")
   document.querySelector(".back").classList.add("hideme")
   dealCardToDealer()
   countDealer()
@@ -97,6 +99,8 @@ const giveMore = () => {
   if (playerCount > 21) {
     document.querySelector(".hits").classList.add("hideme")
     document.querySelector(".stays").classList.add("hideme")
+    document.querySelector(".fake2").classList.remove("hideme")
+    document.querySelector(".fake1").classList.remove("hideme")
     displayStatus.textContent = "YOU BUSTED, PLAY AGAIN"
   }
 }
